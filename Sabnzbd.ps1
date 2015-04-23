@@ -1,6 +1,6 @@
 param($Command, [bool]$OpenInBrowser = $false)
 
-. "./Sabnzbd-Lib.ps1"
+. "$psscriptroot/Sabnzbd-Lib.ps1"
 
 switch($Command) {
 
