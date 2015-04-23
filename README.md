@@ -15,5 +15,7 @@ Usage
 your default browser
 * `./Sabnzbd stop` - Stops the service
 * `./Sabnzbd restart` - Restarts the service
+* `./Sabnzbd status` - Prints the service status
+* `./Sabnzbd browse` - Opens Sabnzbd in your default browser
 * `./Sabnzbd build` - Builds the docker image for Sabnzbd. You would only need to do this if you have changed the Dockerfile 
 or have an outdated version.

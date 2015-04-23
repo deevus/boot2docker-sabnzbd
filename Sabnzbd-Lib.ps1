@@ -19,6 +19,26 @@ function docker_stop {
   }
 }
 
+function is_running {
+  # check if running already
+  if(docker ps | grep deevus/sabnzbd) {
+    $true
+  }
+  else {
+    $false
+  }
+}
+
+function open_in_browser {
+  $running = is_running
+  if($running) {
+    start "http://$(boot2docker ip):9200"
+  }
+  else {
+    "Sabnzbd is not running."
+  }
+}
+
 function start_sabnzbd($open_in_browser = $false) {
   "Starting Sabnzbd..."
 
@@ -34,6 +54,16 @@ function start_sabnzbd($open_in_browser = $false) {
   docker run -d -p 9200:9200 -v /home/docker/usenet:/data deevus/sabnzbd
 
   if($open_in_browser) {
-    start "http://$(boot2docker ip):9200"
+    open_in_browser
+  }
+}
+
+function print_status {
+  $running = is_running
+  if($running) {
+    "Sabnzbd is running."
+  }
+  else {
+    "Sabnzbd is not running."
   }
 }
