@@ -4,8 +4,9 @@ A docker image for Sabnzbd with scripts for managing in Windows with Boot2Docker
 Setup
 --
 
-You need to add a shared folder called `usenet` to the boot2docker vm. The easiest way is to open Virtualbox,
-then Settings for boot2docker-vm and add it in the Shared Folders section. Make sure you set it to Auto-mount and Make Permanent.
+You need to add a shared folder called `usenet` to the boot2docker vm. This is where your Sabnzbd data will go. Create a folder on your local machine somewhere, then we add it to Virtualbox...
+
+Add it in `Virtualbox -> boot2docker-vm -> Settings -> Shared Folders`. Make sure you set it to Auto-mount and Make Permanent.
 
 Usage
 --
