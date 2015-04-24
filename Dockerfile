@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:jcfp/ppa
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y sabnzbdplus wget
+RUN apt-get install -y --force-yes sabnzbdplus wget
 
 WORKDIR /tmp
 RUN wget http://www.rarlab.com/rar/unrar_5.2.5-0.1_amd64.deb
