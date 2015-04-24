@@ -1,0 +1,52 @@
+#!/bin/bash
+
+function start {
+  boot2docker ssh "sudo mkdir -p ~/usenet && sudo mount -t vboxsf usenet ~/usenet"
+  docker run -d -p 9200:9200 -v /home/docker/usenet:/data deevus/sabnzbd
+}
+
+function stop {
+  docker stop $(docker ps | grep deevus/sabnzbd | awk '{ print $1 }')
+}
+
+function build {
+  docker build -t=deevus/sabnzbd
+}
+
+function browse {
+  open "http://$(boot2docker ip):9200/"
+}
+
+function status {
+  docker ps | grep deevus/sabnzbd
+}
+
+case "$1" in
+  start)
+    start;;
+
+  stop)
+    stop
+    ;;
+
+  status)
+    status;;
+
+  restart)
+    stop
+    start
+    ;;
+
+  browse)
+    browse
+    ;;
+
+  build)
+    build
+    ;;
+
+  *)
+    echo $"Usage: $0 {start|stop|status|restart|browse|build}"
+    exit 1
+
+esac
